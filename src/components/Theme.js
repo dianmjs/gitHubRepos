@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
     width: "50vw",
     padding: "10px",
     margin: " 0 10px 0 10px",
+    boxShadow: "2px 2px 5px #ab47bc",
   },
   button: {
     margin: theme.spacing(2),
@@ -27,13 +28,14 @@ export default makeStyles((theme) => ({
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
   },
   inputRepo: {
-    width: "50vw",
+    width: "49vw",
     padding: "10px",
     margin: " 0 10px 0 10px",
   },
   conte: {
     width: theme.spacing(2),
     height: theme.spacing(2),
+    paddingLeft: "8px!important",
   },
   buttonRepo: {
     margin: "2px 15px 9px 14px",
@@ -52,8 +54,9 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
-  summary: {
-    
+  SearchRepo: {
+    margin: "109px 3px -7px 15px",
+    padding: "0px 38px",
   },
   buttonFollow: {
     // maxWidth: "100%",
@@ -62,9 +65,10 @@ export default makeStyles((theme) => ({
     left: "16px",
     width: "196px",
     height: "26px",
-    margin: "36px -6px 2px 0px",
+    margin: "17px 3px 8px 2px",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
     color: "#24292e",
+    fontSize: 16,
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
   },
   point: {
@@ -77,8 +81,12 @@ export default makeStyles((theme) => ({
   },
   contecRepo: {
     margin: "1px -12px 3px 35px",
+    paddingLeft: "8px!important",
   },
   buttonBack: {
     margin: theme.spacing(1),
+  },
+  info: {
+    paddingRight: "16px!important",
   },
 }));

@@ -15,45 +15,48 @@ const Repos = () => {
         <Grid item>
           <InfoUser />
         </Grid>
-        <Grid item className={classes.contecRepo}>
-          <form noValidate autoComplete="off">
-            <TextField
-              required
-              placeholder="Find a repository..."
-              variant="outlined"
-              // value={input}
-              type="text"
-              size="small"
-              className={classes.inputRepo}
-              // onChange={onChangeHanler}
-            />
+        <Grid item>
+          <div className={classes.contecRepo}>
+            <form noValidate autoComplete="off">
+              <TextField
+                required
+                placeholder="Find a repository..."
+                variant="outlined"
+                // value={input}
+                type="text"
+                size="small"
+                className={classes.inputRepo}
+                // onChange={onChangeHanler}
+              />
 
-            <Button
-              variant="outlined"
-              type="submit"
-              className={classes.buttonRepo}
-            >
-              Language: ALL #
-            </Button>
-          </form>
-          <div>
-            <Divider />
-            <div>
-              <Typography
-                variant="h5"
-                color="initial"
-                className={classes.textRepo}
+              <Button
+                variant="outlined"
+                type="submit"
+                className={classes.buttonRepo}
               >
-                dotfiles
-              </Typography>
-              <Typography variant="body1" className={classes.textRepo2}>
-                Forked from emacs-lsp/lsp-mode
-              </Typography>
-              <Typography variant="body2" className={classes.point}>
-                <FiberManualRecordIcon style={{ color: "#651fff" }} /> hit user
-              </Typography>
+                Language: ALL #
+              </Button>
+            </form>
+            <div>
+              <Divider />
+              <div>
+                <Typography
+                  variant="h5"
+                  color="initial"
+                  className={classes.textRepo}
+                >
+                  dotfiles
+                </Typography>
+                <Typography variant="body1" className={classes.textRepo2}>
+                  Forked from emacs-lsp/lsp-mode
+                </Typography>
+                <Typography variant="body2" className={classes.point}>
+                  <FiberManualRecordIcon style={{ color: "#651fff" }} /> hit
+                  user
+                </Typography>
+              </div>
+              <Divider />
             </div>
-            <Divider />
           </div>
         </Grid>
       </Grid>

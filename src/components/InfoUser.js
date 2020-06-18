@@ -12,14 +12,12 @@ export const InfoUser = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.info}>
       <div>
         <img variant="square" src={Octocat} className={classes.media} />
       </div>
       <div>
-        <Typography variant="h6" gutterBottom>
-          Git User
-        </Typography>
+        <Typography variant="h5">Git User</Typography>
         <Typography variant="body2" style={{ color: "#424242" }}>
           git user alias
         </Typography>
@@ -39,22 +37,26 @@ export const InfoUser = () => {
         </Typography>
       </div>
       <br />
-      <div >
-          <Typography variant="body2" color="initial" className={classes.list}>
-            <BusinessIcon style={{ color: "#424242" }} />
-            company.io
-          </Typography>
-       
+      <div>
+        <Typography variant="body2" color="initial" className={classes.list}>
+          <BusinessIcon style={{ color: "#424242" }} />
+          company.io
+        </Typography>
+
         <Typography variant="body2" color="initial" className={classes.list}>
           <RoomIcon style={{ color: "#424242" }} />
           Medellin, Colombia.
         </Typography>
-        
-        <Typography variant="body2" color="primary" className={classes.list} href="company.io">
+
+        <Typography
+          variant="body2"
+          color="primary"
+          className={classes.list}
+          href="company.io"
+        >
           <LinkIcon style={{ color: "#424242" }} />
           company.io
         </Typography>
-      
       </div>
       <br />
       <div className={classes.summary}>
