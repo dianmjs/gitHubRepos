@@ -1,35 +1,56 @@
-import React from "react";
-import CardMedia from "@material-ui/core/CardMedia";
+import React, { useState } from "react";
 import useStyles from "./Theme";
 import Octocat from "./Image/Octocat.jpg";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Card from "@material-ui/core/Card";
-import { Grid } from "@material-ui/core";
+import { Grid, Divider, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { NavLink } from "react-router-dom";
 
 const SearchItem = () => {
+  const [input, setInput] = useState("");
+
+  const onChangeHanler = (e) => {
+    setInput(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleSumit = (e) => {
+    e.preventDefault();
+  };
+
   const classes = useStyles();
   return (
-    <Grid justify="center">
-      <Grid item>
-        <Card className={classes.pic}>
-          <CardMedia className={classes.media} image={Octocat} />
-        </Card>
+    <div>
+      <Grid container justify="center" direction="row" alignItems="center">
+        <Grid item xs={3} sm={3} md={2}>
+          <div>
+            <img variant="square" src={Octocat} className={classes.media} />
+          </div>
+        </Grid>
+        <Grid item xs={6} sm={5} md={6}>
+          <form onSubmit={handleSumit} noValidate autoComplete="off">
+            <TextField
+              required
+              placeholder="Find a repository..."
+              variant="outlined"
+              value={input}
+              type="text"
+              size="small"
+              className={classes.todoInput}
+              onChange={onChangeHanler}
+            />
+          </form>
+        </Grid>
+
+        <Grid item xs={3} sm={3} md={3}>
+          <NavLink to="/Repos" style={{ color: "rgba(255, 255, 255, 0.7)" }}>
+            <Button variant="outlined" type="submit" className={classes.button}>
+              Search
+            </Button>
+          </NavLink>
+        </Grid>
       </Grid>
-      <Grid item>
-        <form>
-          <TextField
-            id="outlined-basic"
-            placeholder="Find a repository..."
-            variant="outlined"
-          />
-          <Button color="primary" variant="contained">
-            Search
-          </Button>
-        </form>
-      </Grid>
-    </Grid>
+    </div>
   );
 };
 
