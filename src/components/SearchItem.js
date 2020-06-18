@@ -22,12 +22,12 @@ const SearchItem = () => {
   return (
     <div>
       <Grid container justify="center" direction="row" alignItems="center">
-        <Grid item xs={3} sm={3} md={2}>
+        <Grid item>
           <div>
             <img variant="square" src={Octocat} className={classes.media} />
           </div>
         </Grid>
-        <Grid item xs={6} sm={5} md={6}>
+        <Grid item>
           <form onSubmit={handleSumit} noValidate autoComplete="off">
             <TextField
               required
