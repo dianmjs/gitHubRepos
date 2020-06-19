@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import useStyles from "./Theme";
 import Octocat from "./Image/Octocat.jpg";
-import { Grid, Divider, Typography } from "@material-ui/core";
+import { Grid, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { NavLink } from "react-router-dom";
@@ -22,7 +22,7 @@ const SearchItem = (props) => {
               required
               placeholder="Find a repository..."
               variant="outlined"
-              value={props.input}
+              value={props.user}
               type="text"
               size="small"
               className={classes.todoInput}
@@ -33,7 +33,12 @@ const SearchItem = (props) => {
 
         <Grid item xs={3} sm={3} md={3}>
           <NavLink to="/Repos" style={{ color: "rgba(255, 255, 255, 0.7)" }}>
-            <Button variant="outlined" type="submit" className={classes.button}>
+            <Button
+              variant="outlined"
+              type="submit"
+              className={classes.button}
+              onClick={props.obtenerDatos}
+            >
               Search
             </Button>
           </NavLink>

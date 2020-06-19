@@ -6,14 +6,22 @@ import TextField from "@material-ui/core/TextField";
 import { InfoUser } from "../components/InfoUser";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
-const Repos = () => {
+const Repos = (props) => {
   const classes = useStyles();
 
   return (
     <div>
       <Grid container justify="center" direction="row">
         <Grid item>
-          <InfoUser />
+          <InfoUser
+            avatar={props.avatar_url}
+            name={props.name}
+            alias={props.login}
+            profile={props.bio}
+            company={props.company}
+            location={props.location}
+            blog={props.blog}
+          />
         </Grid>
         <Grid item>
           <div className={classes.contecRepo}>
@@ -26,7 +34,6 @@ const Repos = () => {
                 type="text"
                 size="small"
                 className={classes.inputRepo}
-                // onChange={onChangeHanler}
               />
 
               <Button
@@ -45,14 +52,14 @@ const Repos = () => {
                   color="initial"
                   className={classes.textRepo}
                 >
-                  dotfiles
+                  {props.repos_url}
                 </Typography>
                 <Typography variant="body1" className={classes.textRepo2}>
                   Forked from emacs-lsp/lsp-mode
                 </Typography>
                 <Typography variant="body2" className={classes.point}>
-                  <FiberManualRecordIcon style={{ color: "#651fff" }} /> hit
-                  user
+                  <FiberManualRecordIcon style={{ color: "#651fff" }} />
+                  hit user
                 </Typography>
               </div>
               <Divider />

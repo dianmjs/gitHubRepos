@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Divider, List } from "@material-ui/core";
+import { Typography, Divider } from "@material-ui/core";
 import Octocat from "./Image/Octocat.jpg";
 import Button from "@material-ui/core/Button";
 import useStyles from "./Theme";
@@ -8,18 +8,22 @@ import RoomIcon from "@material-ui/icons/Room";
 import LinkIcon from "@material-ui/icons/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-export const InfoUser = () => {
+export const InfoUser = (props) => {
   const classes = useStyles();
 
   return (
     <div className={classes.info}>
       <div>
-        <img variant="square" src={Octocat} className={classes.media} />
+        <img
+          variant="square"
+          src={props.avatar_url}
+          className={classes.media}
+        />
       </div>
       <div>
-        <Typography variant="h5">Git User</Typography>
+        <Typography variant="h5">{props.name}</Typography>
         <Typography variant="body2" style={{ color: "#424242" }}>
-          git user alias
+          {props.alias}
         </Typography>
       </div>
       <div>
@@ -33,19 +37,19 @@ export const InfoUser = () => {
       </div>
       <div>
         <Typography variant="body2" color="initial">
-          Software engineer at Company
+          {props.profile}
         </Typography>
       </div>
       <br />
       <div>
         <Typography variant="body2" color="initial" className={classes.list}>
           <BusinessIcon style={{ color: "#424242" }} />
-          company.io
+          {props.company}
         </Typography>
 
         <Typography variant="body2" color="initial" className={classes.list}>
           <RoomIcon style={{ color: "#424242" }} />
-          Medellin, Colombia.
+          {props.location}
         </Typography>
 
         <Typography
@@ -55,7 +59,7 @@ export const InfoUser = () => {
           href="company.io"
         >
           <LinkIcon style={{ color: "#424242" }} />
-          company.io
+          {props.blog}
         </Typography>
       </div>
       <br />
