@@ -2,21 +2,35 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchItem from "./components/SearchItem";
 import Repos from "./components/Repos";
+import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  // const [data, setData] = useState([]);
+function App(props) {
+  //const [data, setData] = useState([]);
   const [user, setUser] = useState("");
 
-  useEffect(() => {
-    console.log("useEffect");
-    obtenerDatos();
-  }, []);
+  const onChangeHanler = (e) => {
+    setUser(e.target.value);
+    console.log(e.target.value);
+  };
 
+  const handleSumit = (e) => {
+    e.preventDefault();
+    axios.get(`https://api.github.com/users/${user}/repos`).then((resp) => {
+      props.onSubmit(resp.data);
+      setUser("");
+    });
+
+    // e.target.reset();
+  };
+
+  /*
   function obtenerDatos(user) {
-    return fetch(`https://api.github.com/users/${user}`).then(
-      (response) => response.json().then((json) => console.log(json))
-      /*.then((data) => {
+    return fetch(`https://api.github.com/users/${user}`).then((response) =>
+      response
+        .json()
+        .then((json) => console.log(json))
+        .then((data) => {
           setUser({
             user: {
               avatar_url: data.avatar_url,
@@ -29,19 +43,11 @@ function App() {
               repos: data.repos_url,
             },
           });
-        })*/
+        })
     );
   }
 
-  const onChangeHanler = (e) => {
-    setUser(e.target.value);
-    console.log(e.target.value);
-  };
-
-  const handleSumit = (e) => {
-    e.preventDefault();
-    e.target.reset();
-  };
+  */
 
   return (
     <div>
@@ -53,12 +59,11 @@ function App() {
               user={user}
               onChangeHanler={onChangeHanler}
               handleSumit={handleSumit}
-              obtenerDatos={obtenerDatos}
             />
           </Route>
           <Route path="/Repos">
             <Repos
-            /* user={user}
+              user={user}
               avatar={user.avatar_url}
               name={user.name}
               alias={user.login}
@@ -66,7 +71,7 @@ function App() {
               company={user.company}
               location={user.location}
               blog={user.blog}
-              repos={user.repos_url}*/
+              repos={user.repos_url}
             />
           </Route>
         </Switch>

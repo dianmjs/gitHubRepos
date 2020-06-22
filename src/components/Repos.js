@@ -12,7 +12,7 @@ const Repos = (props) => {
   return (
     <div>
       <Grid container justify="center" direction="row">
-        <Grid item>
+        <Grid item xs={6} sm={3} md={2}>
           <InfoUser
             avatar={props.avatar_url}
             name={props.name}
@@ -23,7 +23,7 @@ const Repos = (props) => {
             blog={props.blog}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={9} md={8}>
           <div className={classes.contecRepo}>
             <form noValidate autoComplete="off">
               <TextField
@@ -41,7 +41,7 @@ const Repos = (props) => {
                 type="submit"
                 className={classes.buttonRepo}
               >
-                Language: ALL #
+                Language #
               </Button>
             </form>
             <div>
@@ -52,7 +52,7 @@ const Repos = (props) => {
                   color="initial"
                   className={classes.textRepo}
                 >
-                  {props.repos_url}
+                  {props.user.repos_url}
                 </Typography>
                 <Typography variant="body1" className={classes.textRepo2}>
                   Forked from emacs-lsp/lsp-mode

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Divider } from "@material-ui/core";
+import { Typography, Divider, Avatar } from "@material-ui/core";
 import Octocat from "./Image/Octocat.jpg";
 import Button from "@material-ui/core/Button";
 import useStyles from "./Theme";
@@ -63,10 +63,19 @@ export const InfoUser = (props) => {
         </Typography>
       </div>
       <br />
-      <div className={classes.summary}>
+      <div>
         <Typography variant="body2" color="initial">
           Block or report user
         </Typography>
+        <Divider />
+      </div>
+      <div>
+        <Typography variant="h6" className={classes.orga}>
+          Organizations
+        </Typography>
+        <Avatar variant="square" className={classes.organizations}>
+          N
+        </Avatar>
         <Divider />
       </div>
       <div>

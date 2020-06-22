@@ -11,16 +11,16 @@ const SearchItem = (props) => {
   return (
     <div className={classes.SearchRepo}>
       <Grid container justify="center" direction="row" alignItems="center">
-        <Grid item>
+        <Grid item xs={12} sm={3} md={2}>
           <div>
             <img variant="square" src={Octocat} className={classes.media} />
           </div>
         </Grid>
-        <Grid item>
+        <Grid item xs={8} sm={7} md={7}>
           <form onSubmit={props.handleSumit} noValidate autoComplete="off">
             <TextField
               required
-              placeholder="Find a repository..."
+              placeholder="GitHub username..."
               variant="outlined"
               value={props.user}
               type="text"
@@ -31,13 +31,13 @@ const SearchItem = (props) => {
           </form>
         </Grid>
 
-        <Grid item xs={3} sm={3} md={3}>
+        <Grid item xs={4} sm={2} md={2}>
           <NavLink to="/Repos" style={{ color: "rgba(255, 255, 255, 0.7)" }}>
             <Button
               variant="outlined"
               type="submit"
               className={classes.button}
-              onClick={props.obtenerDatos}
+              onClick={props.getDate}
             >
               Search
             </Button>

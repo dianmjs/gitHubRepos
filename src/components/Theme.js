@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 
   media: {
-    width: theme.spacing(20),
+    width: "196px",
     height: theme.spacing(20),
   },
   todoInput: {
@@ -22,8 +22,9 @@ export default makeStyles((theme) => ({
     boxShadow: "2px 2px 5px #ab47bc",
   },
   button: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
     color: "#24292e",
+    margin: 0,
     backgroundColor: "rgba(255, 255, 255, 0.7)",
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
   },
@@ -88,5 +89,13 @@ export default makeStyles((theme) => ({
   },
   info: {
     paddingRight: "16px!important",
+  },
+  orga: {
+    margin: "8px 5px 5px 3px",
+    height: "44px",
+  },
+  organizations: {
+    // margin: theme.spacing(1),
+    margin: "2px 3px 3px 3px",
   },
 }));
