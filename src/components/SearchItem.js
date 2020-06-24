@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useStyles from "./Theme";
 import Octocat from "./Image/Octocat.jpg";
 import { Grid, Divider } from "@material-ui/core";
@@ -7,6 +7,18 @@ import TextField from "@material-ui/core/TextField";
 import { NavLink } from "react-router-dom";
 
 const SearchItem = (props) => {
+  const [users, setUsers] = useState("");
+
+  const onChangeHanler = (e) => {
+    setUsers(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.getDates(users);
+    setUsers("");
+  };
+
   const classes = useStyles();
   return (
     <div className={classes.SearchRepo}>
@@ -17,18 +29,16 @@ const SearchItem = (props) => {
           </div>
         </Grid>
         <Grid item xs={8} sm={7} md={7}>
-          <form onSubmit={props.handleSumit} noValidate autoComplete="off">
-            <TextField
-              required
-              placeholder="GitHub username..."
-              variant="outlined"
-              value={props.user}
-              type="text"
-              size="small"
-              className={classes.todoInput}
-              onChange={props.onChangeHanler}
-            />
-          </form>
+          <TextField
+            required
+            placeholder="GitHub username..."
+            variant="outlined"
+            value={props.users}
+            type="text"
+            size="small"
+            className={classes.todoInput}
+            onChange={onChangeHanler}
+          />
         </Grid>
 
         <Grid item xs={4} sm={2} md={2}>
@@ -37,7 +47,7 @@ const SearchItem = (props) => {
               variant="outlined"
               type="submit"
               className={classes.button}
-              onClick={props.getDate}
+              onClick={handleSubmit}
             >
               Search
             </Button>

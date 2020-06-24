@@ -13,15 +13,7 @@ const Repos = (props) => {
     <div>
       <Grid container justify="center" direction="row">
         <Grid item xs={6} sm={3} md={2}>
-          <InfoUser
-            avatar={props.avatar_url}
-            name={props.name}
-            alias={props.login}
-            profile={props.bio}
-            company={props.company}
-            location={props.location}
-            blog={props.blog}
-          />
+          <InfoUser data={props.data} />
         </Grid>
         <Grid item xs={12} sm={9} md={8}>
           <div className={classes.contecRepo}>
@@ -30,7 +22,6 @@ const Repos = (props) => {
                 required
                 placeholder="Find a repository..."
                 variant="outlined"
-                // value={input}
                 type="text"
                 size="small"
                 className={classes.inputRepo}
@@ -52,7 +43,7 @@ const Repos = (props) => {
                   color="initial"
                   className={classes.textRepo}
                 >
-                  {props.user.repos_url}
+                  {props.data.repos_url}
                 </Typography>
                 <Typography variant="body1" className={classes.textRepo2}>
                   Forked from emacs-lsp/lsp-mode
