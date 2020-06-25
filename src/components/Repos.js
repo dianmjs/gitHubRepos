@@ -1,12 +1,13 @@
 import React from "react";
 import useStyles from "./Theme";
-import { Grid, Divider, Typography } from "@material-ui/core";
+import { Grid, Divider, Typography, ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { InfoUser } from "../components/InfoUser";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import Lists from "../components/Lists";
 
 const Repos = (props) => {
+  console.log(props);
   const classes = useStyles();
 
   return (
@@ -35,26 +36,7 @@ const Repos = (props) => {
                 Language #
               </Button>
             </form>
-            <div>
-              <Divider />
-              <div>
-                <Typography
-                  variant="h5"
-                  color="initial"
-                  className={classes.textRepo}
-                >
-                  {props.data.repos_url}
-                </Typography>
-                <Typography variant="body1" className={classes.textRepo2}>
-                  Forked from emacs-lsp/lsp-mode
-                </Typography>
-                <Typography variant="body2" className={classes.point}>
-                  <FiberManualRecordIcon style={{ color: "#651fff" }} />
-                  hit user
-                </Typography>
-              </div>
-              <Divider />
-            </div>
+            <Lists repo={props.repo} />
           </div>
         </Grid>
       </Grid>

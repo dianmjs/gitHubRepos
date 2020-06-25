@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Divider, Avatar } from "@material-ui/core";
-import Octocat from "./Image/Octocat.jpg";
 import Button from "@material-ui/core/Button";
 import useStyles from "./Theme";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -16,14 +15,14 @@ export const InfoUser = (props) => {
       <div>
         <img
           variant="square"
-          src={props.avatar_url}
+          src={props.data.avatar_url}
           className={classes.media}
         />
       </div>
       <div>
-        <Typography variant="h5">{props.name}</Typography>
+        <Typography variant="h5">{props.data.name}</Typography>
         <Typography variant="body2" style={{ color: "#424242" }}>
-          {props.alias}
+          {props.data.login}
         </Typography>
       </div>
       <div>
@@ -37,19 +36,19 @@ export const InfoUser = (props) => {
       </div>
       <div>
         <Typography variant="body2" color="initial">
-          {props.profile}
+          {props.data.profile}
         </Typography>
       </div>
       <br />
       <div>
         <Typography variant="body2" color="initial" className={classes.list}>
           <BusinessIcon style={{ color: "#424242" }} />
-          {props.company}
+          {props.data.company}
         </Typography>
 
         <Typography variant="body2" color="initial" className={classes.list}>
           <RoomIcon style={{ color: "#424242" }} />
-          {props.location}
+          {props.data.location}
         </Typography>
 
         <Typography
@@ -59,7 +58,7 @@ export const InfoUser = (props) => {
           href="company.io"
         >
           <LinkIcon style={{ color: "#424242" }} />
-          {props.blog}
+          {props.data.blog}
         </Typography>
       </div>
       <br />

@@ -16,13 +16,12 @@ export default makeStyles((theme) => ({
     height: theme.spacing(20),
   },
   todoInput: {
-    width: "50vw",
+    width: "39vw",
     padding: "10px",
-    margin: " 0 10px 0 10px",
+    // margin: " 0 10px 0 10px",
     boxShadow: "2px 2px 5px #ab47bc",
   },
   button: {
-    margin: theme.spacing(1),
     color: "#24292e",
     margin: 0,
     backgroundColor: "rgba(255, 255, 255, 0.7)",
@@ -79,6 +78,7 @@ export default makeStyles((theme) => ({
     color: "#424242",
     margin: "2px 2px 24px -4px",
     padding: "10px 0px",
+    marginRight: "16px!important",
   },
   contecRepo: {
     margin: "1px -12px 3px 35px",
@@ -95,7 +95,19 @@ export default makeStyles((theme) => ({
     height: "44px",
   },
   organizations: {
-    // margin: theme.spacing(1),
     margin: "2px 3px 3px 3px",
+    color: "#424242",
+  },
+  reposLenguage: {
+    display: "flex",
+    alignItems: "center",
+    color: "#424242",
+  },
+  count: {
+    marginRight: "16px!important",
+    color: "#424242",
+  },
+  line: {
+    borderBottom: "1px solid #e1e4e8!important",
   },
 }));

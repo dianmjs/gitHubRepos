@@ -6,12 +6,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);
+  const [repo, setRepo] = useState([]);
 
   const getDates = async (user) => {
-    const data = await fetch(`https://api.github.com/users/${user}/repos`);
+    const data = await fetch(`https://api.github.com/users/${user}`);
     const username = await data.json();
     console.log(username);
     setData(username);
+  };
+
+  const getRepo = async (user) => {
+    const data = await fetch(`https://api.github.com/users/${user}/repos`);
+    const repos = await data.json();
+    console.log(repos);
+    setRepo(repos);
   };
 
   return (
@@ -20,10 +28,10 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <SearchItem getDates={getDates} />
+            <SearchItem data={data} getDates={getDates} getRepo={getRepo} />
           </Route>
           <Route path="/Repos">
-            <Repos data={data} component={Repos} />
+            <Repos data={data} repo={repo} />
           </Route>
         </Switch>
       </Router>

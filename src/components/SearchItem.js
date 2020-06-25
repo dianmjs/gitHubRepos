@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import useStyles from "./Theme";
 import Octocat from "./Image/Octocat.jpg";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import { Grid, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SearchItem = (props) => {
   const [users, setUsers] = useState("");
@@ -13,9 +15,15 @@ const SearchItem = (props) => {
     setUsers(e.target.value);
   };
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     props.getDates(users);
+    props.getRepo(users);
+
+    history.push("/Repos");
     setUsers("");
   };
 
