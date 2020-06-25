@@ -68,15 +68,11 @@ export const InfoUser = (props) => {
         </Typography>
         <Divider />
       </div>
-      <div>
-        <Typography variant="h6" className={classes.orga}>
-          Organizations
-        </Typography>
-        <Avatar variant="square" className={classes.organizations}>
-          N
-        </Avatar>
+      {/* <div>
+        <Typography variant="h6" className={classes.orga}></Typography>
+        <Avatar variant="square" className={classes.organizations}></Avatar>
         <Divider />
-      </div>
+      </div>*/}
       <div>
         <Button
           variant="contained"
@@ -85,6 +81,7 @@ export const InfoUser = (props) => {
           className={classes.buttonBack}
           startIcon={<ChevronLeftIcon />}
           href="/"
+          disableElevation
         >
           Back
         </Button>

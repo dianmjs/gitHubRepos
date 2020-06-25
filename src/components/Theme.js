@@ -13,19 +13,15 @@ export default makeStyles((theme) => ({
 
   media: {
     width: "196px",
-    height: theme.spacing(20),
+    height: "196px",
   },
   todoInput: {
     width: "39vw",
-    padding: "10px",
-    // margin: " 0 10px 0 10px",
     boxShadow: "2px 2px 5px #ab47bc",
   },
   button: {
-    color: "#24292e",
-    margin: 0,
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
-    backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
+    margin: "2px 15px 9px 14px",
+    backgroundColor: "#fff",
   },
   inputRepo: {
     width: "49vw",
@@ -40,6 +36,7 @@ export default makeStyles((theme) => ({
   buttonRepo: {
     margin: "2px 15px 9px 14px",
     color: "#24292e",
+    borderColor: "rgba(27,31,35,.15)",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
   },
@@ -57,9 +54,9 @@ export default makeStyles((theme) => ({
   SearchRepo: {
     margin: "109px 3px -7px 15px",
     padding: "0px 38px",
+    display: "flex",
   },
   buttonFollow: {
-    // maxWidth: "100%",
     position: "static",
     top: "0px !important",
     left: "16px",
@@ -73,7 +70,7 @@ export default makeStyles((theme) => ({
   },
   point: {
     display: "flex",
-    // margin: "18px 3px",
+
     alignItems: "center",
     color: "#424242",
     margin: "2px 2px 24px -4px",
@@ -86,6 +83,7 @@ export default makeStyles((theme) => ({
   },
   buttonBack: {
     margin: theme.spacing(1),
+    backgroundColor: "#fff",
   },
   info: {
     paddingRight: "16px!important",
@@ -109,5 +107,9 @@ export default makeStyles((theme) => ({
   },
   line: {
     borderBottom: "1px solid #e1e4e8!important",
+  },
+  inputIndex: {
+    margin: "1px -12px 3px 35px",
+    display: "flex",
   },
 }));

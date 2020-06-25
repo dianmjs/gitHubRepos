@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useStyles from "./Theme";
 import { Grid, Divider, Typography, ListItem } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -7,8 +7,12 @@ import { InfoUser } from "../components/InfoUser";
 import Lists from "../components/Lists";
 
 const Repos = (props) => {
-  console.log(props);
+  const [repoFilter, setRepoFilter] = useState("");
   const classes = useStyles();
+
+  const onchangeRepo = (e) => {
+    setRepoFilter(e.target.value);
+  };
 
   return (
     <div>
@@ -26,17 +30,18 @@ const Repos = (props) => {
                 type="text"
                 size="small"
                 className={classes.inputRepo}
+                onChange={onchangeRepo}
               />
 
               <Button
                 variant="outlined"
-                type="submit"
+                type="button"
                 className={classes.buttonRepo}
               >
                 Language #
               </Button>
             </form>
-            <Lists repo={props.repo} />
+            <Lists repo={props.repo} repoFilter={repoFilter} />
           </div>
         </Grid>
       </Grid>

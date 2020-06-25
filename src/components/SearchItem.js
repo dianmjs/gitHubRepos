@@ -5,11 +5,24 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import { Grid, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 const SearchItem = (props) => {
   const [users, setUsers] = useState("");
+  const [error, setError] = useState(null);
+
+  const disable = () => {
+    if (props.data.login === null) {
+      return setError({
+        error: "Icorrect Username",
+      });
+    } else {
+      return setError({
+        error: null,
+      });
+    }
+  };
 
   const onChangeHanler = (e) => {
     setUsers(e.target.value);
@@ -19,10 +32,10 @@ const SearchItem = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    disable();
     props.getDates(users);
     props.getRepo(users);
-
+    //redirige a otra pagina
     history.push("/Repos");
     setUsers("");
   };
@@ -36,30 +49,31 @@ const SearchItem = (props) => {
             <img variant="square" src={Octocat} className={classes.media} />
           </div>
         </Grid>
-        <Grid item xs={8} sm={7} md={7}>
-          <TextField
-            required
-            placeholder="GitHub username..."
-            variant="outlined"
-            value={props.users}
-            type="text"
-            size="small"
-            className={classes.todoInput}
-            onChange={onChangeHanler}
-          />
-        </Grid>
+        <Grid item xs={11} sm={9} md={7}>
+          <div className={classes.inputIndex}>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                required
+                placeholder="GitHub username..."
+                variant="outlined"
+                value={props.users}
+                type="text"
+                size="small"
+                helperText={error}
+                className={classes.todoInput}
+                onChange={onChangeHanler}
+              />
 
-        <Grid item xs={4} sm={2} md={2}>
-          <NavLink to="/Repos" style={{ color: "rgba(255, 255, 255, 0.7)" }}>
-            <Button
-              variant="outlined"
-              type="submit"
-              className={classes.button}
-              onClick={handleSubmit}
-            >
-              Search
-            </Button>
-          </NavLink>
+              <Button
+                color="primary"
+                variant="contained"
+                type="submit"
+                className={classes.button}
+              >
+                Search
+              </Button>
+            </form>
+          </div>
         </Grid>
       </Grid>
     </div>
