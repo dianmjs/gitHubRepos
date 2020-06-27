@@ -8,6 +8,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 export const InfoUser = (props) => {
+  console.log(props.data);
   const classes = useStyles();
 
   return (
@@ -41,25 +42,31 @@ export const InfoUser = (props) => {
       </div>
       <br />
       <div>
-        <Typography variant="body2" color="initial" className={classes.list}>
-          <BusinessIcon style={{ color: "#424242" }} />
-          {props.data.company}
-        </Typography>
+        {props.data.company ? (
+          <Typography variant="body2" color="initial" className={classes.list}>
+            <BusinessIcon style={{ color: "#424242" }} />
+            {props.data.company}
+          </Typography>
+        ) : null}
 
-        <Typography variant="body2" color="initial" className={classes.list}>
-          <RoomIcon style={{ color: "#424242" }} />
-          {props.data.location}
-        </Typography>
+        {props.data.location ? (
+          <Typography variant="body2" color="initial" className={classes.list}>
+            <RoomIcon style={{ color: "#424242" }} />
+            {props.data.location}
+          </Typography>
+        ) : null}
 
-        <Typography
-          variant="body2"
-          color="primary"
-          className={classes.list}
-          href="company.io"
-        >
-          <LinkIcon style={{ color: "#424242" }} />
-          {props.data.blog}
-        </Typography>
+        {props.data.blog ? (
+          <Typography
+            variant="body2"
+            color="primary"
+            className={classes.list}
+            href={props.data.blog}
+          >
+            <LinkIcon style={{ color: "#424242" }} />
+            {props.data.blog}
+          </Typography>
+        ) : null}
       </div>
       <br />
       <div>

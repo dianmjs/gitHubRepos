@@ -24,9 +24,10 @@ export default makeStyles((theme) => ({
     backgroundColor: "#fff",
   },
   inputRepo: {
-    width: "49vw",
+    width: "43vw",
     padding: "10px",
-    margin: " 0 10px 0 10px",
+    //margin: " 0 10px 0 10px",
+    margin: theme.spacing(2),
   },
   conte: {
     width: theme.spacing(2),
@@ -42,10 +43,12 @@ export default makeStyles((theme) => ({
   },
   textRepo: {
     color: "#0366d6",
-    padding: "28px 1px",
+    padding: "9px 2px",
   },
   textRepo2: {
     color: "#424242",
+    margin: "-19px 5px 6px 4px",
+    padding: "3px 5px 10px 1px",
   },
   list: {
     display: "flex",
@@ -70,7 +73,6 @@ export default makeStyles((theme) => ({
   },
   point: {
     display: "flex",
-
     alignItems: "center",
     color: "#424242",
     margin: "2px 2px 24px -4px",
@@ -105,11 +107,25 @@ export default makeStyles((theme) => ({
     marginRight: "16px!important",
     color: "#424242",
   },
+  iconCount: {
+    margin: "8px 6px 13px 2px",
+    color: "#586069!important",
+    fontSize: "17px!important",
+    transform: "rotate(180deg)",
+  },
   line: {
     borderBottom: "1px solid #e1e4e8!important",
   },
   inputIndex: {
     margin: "1px -12px 3px 35px",
     display: "flex",
+  },
+  selector: {
+    width: "134px",
+    color: "#24292e",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    padding: "9px 2px",
+    display: "inline-block",
+    margin: "-7px 1px 9px 6px",
   },
 }));

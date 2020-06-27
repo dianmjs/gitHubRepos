@@ -5,9 +5,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { InfoUser } from "../components/InfoUser";
 import Lists from "../components/Lists";
+import Select from "react-select";
 
 const Repos = (props) => {
   const [repoFilter, setRepoFilter] = useState("");
+
   const classes = useStyles();
 
   const onchangeRepo = (e) => {
@@ -32,14 +34,14 @@ const Repos = (props) => {
                 className={classes.inputRepo}
                 onChange={onchangeRepo}
               />
-
-              <Button
+              <Select placeholder="Language" className={classes.selector} />
+              {/*<Button
                 variant="outlined"
                 type="button"
                 className={classes.buttonRepo}
               >
-                Language #
-              </Button>
+                <Select />
+              </Button>*/}
             </form>
             <Lists repo={props.repo} repoFilter={repoFilter} />
           </div>

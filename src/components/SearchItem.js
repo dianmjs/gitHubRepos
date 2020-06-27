@@ -6,7 +6,6 @@ import { Grid, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 const SearchItem = (props) => {
   const [users, setUsers] = useState("");
@@ -33,9 +32,11 @@ const SearchItem = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     disable();
+    //api de usuarios
     props.getDates(users);
+    //api de repositorios
     props.getRepo(users);
-    //redirige a otra pagina
+    //renderiza a la otra página
     history.push("/Repos");
     setUsers("");
   };
@@ -63,6 +64,9 @@ const SearchItem = (props) => {
                 className={classes.todoInput}
                 onChange={onChangeHanler}
               />
+              {/*<FormHelperText id="component-helper-text" error>
+                Some important helper text
+                </FormHelperText>*/}
 
               <Button
                 color="primary"
