@@ -11,7 +11,6 @@ function App() {
   const getDates = async (user) => {
     const data = await fetch(`https://api.github.com/users/${user}`);
     const username = await data.json();
-    console.log(username);
     setData(username);
   };
 

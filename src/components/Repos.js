@@ -9,8 +9,22 @@ import Select from "react-select";
 
 const Repos = (props) => {
   const [repoFilter, setRepoFilter] = useState("");
-
+  const [menu, setMenu] = useState(false);
   const classes = useStyles();
+
+  const onclickMenu = (e) => {
+    e.preventDefault();
+
+    setMenu({ menu: true }, () => {
+      document.addEventListener("click", closeMenu());
+    });
+  };
+
+  const closeMenu = () => {
+    setMenu({ menu: false }, () => {
+      document.addEventListener("click", closeMenu);
+    });
+  };
 
   const onchangeRepo = (e) => {
     setRepoFilter(e.target.value);
@@ -34,15 +48,39 @@ const Repos = (props) => {
                 className={classes.inputRepo}
                 onChange={onchangeRepo}
               />
-              <Select placeholder="Language" className={classes.selector} />
-              {/*<Button
+            </form>
+            {/*<Button
+                onClick={onclickMenu}
                 variant="outlined"
                 type="button"
                 className={classes.buttonRepo}
               >
-                <Select />
+                Language
               </Button>*/}
-            </form>
+            <div
+              className="dropdown"
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)" }}
+            >
+              <div className="button" onClick={onclickMenu}>
+                <Button variant="outlined" type="button">
+                  {" "}
+                  Language
+                </Button>
+              </div>
+              {menu ? (
+                <ul>
+                  {props.repo.map((leng) => {
+                    return (
+                      <li key={leng.id}>
+                        <a className="active" href="#Create Page">
+                          {leng.language}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : null}
+            </div>
             <Lists repo={props.repo} repoFilter={repoFilter} />
           </div>
         </Grid>

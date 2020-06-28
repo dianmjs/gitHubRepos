@@ -23,12 +23,7 @@ export default makeStyles((theme) => ({
     margin: "2px 15px 9px 14px",
     backgroundColor: "#fff",
   },
-  inputRepo: {
-    width: "43vw",
-    padding: "10px",
-    //margin: " 0 10px 0 10px",
-    margin: theme.spacing(2),
-  },
+
   conte: {
     width: theme.spacing(2),
     height: theme.spacing(2),
@@ -120,12 +115,10 @@ export default makeStyles((theme) => ({
     margin: "1px -12px 3px 35px",
     display: "flex",
   },
-  selector: {
-    width: "134px",
-    color: "#24292e",
-    backgroundColor: "rgba(255, 255, 255, 0.7)",
-    padding: "9px 2px",
-    display: "inline-block",
-    margin: "-7px 1px 9px 6px",
+  inputRepo: {
+    width: "48vw",
+    padding: "5px 12px",
+    //margin: " 0 10px 0 10px",
+    margin: theme.spacing(2),
   },
 }));
