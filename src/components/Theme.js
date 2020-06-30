@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
   },
   todoInput: {
     width: "39vw",
-    boxShadow: "2px 2px 5px #ab47bc",
+    // boxShadow: "2px 2px 5px #ab47bc",
   },
   button: {
     margin: "2px 15px 9px 14px",
@@ -30,8 +30,10 @@ export default makeStyles((theme) => ({
     paddingLeft: "8px!important",
   },
   buttonRepo: {
-    margin: "2px 15px 9px 14px",
+    margin: "1px 1px 7px 17px",
+    padding: " 7px 7px",
     color: "#24292e",
+    borderRadius: "4px",
     borderColor: "rgba(27,31,35,.15)",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
     backgroundImage: "linear-gradient(-180deg,#fafbfc,#eff3f6 90%)",
@@ -117,8 +119,13 @@ export default makeStyles((theme) => ({
   },
   inputRepo: {
     width: "48vw",
-    padding: "5px 12px",
-    //margin: " 0 10px 0 10px",
-    margin: theme.spacing(2),
+    padding: "5px 16px",
+    margin: " 0 10px 0 10px",
+  },
+  loading: {
+    justifyContent: "center",
+    display: "flex",
+    padding: "10px 3px 3px 5px",
+    margin: "154px 10px 62px -9px",
   },
 }));

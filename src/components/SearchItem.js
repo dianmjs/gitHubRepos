@@ -1,27 +1,15 @@
 import React, { useState } from "react";
 import useStyles from "./Theme";
 import Octocat from "./Image/Octocat.jpg";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import { Grid, Divider } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
+import api from "../service/api";
 
 const SearchItem = (props) => {
   const [users, setUsers] = useState("");
-  const [error, setError] = useState(null);
-
-  const disable = () => {
-    if (props.data.login === null) {
-      return setError({
-        error: "Icorrect Username",
-      });
-    } else {
-      return setError({
-        error: null,
-      });
-    }
-  };
+  const [error, setError] = useState(false);
 
   const onChangeHanler = (e) => {
     setUsers(e.target.value);
@@ -31,13 +19,17 @@ const SearchItem = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    disable();
-    //api de usuarios
-    props.getDates(users);
-    //api de repositorios
-    props.getRepo(users);
-    //renderiza a la otra página
-    history.push("/Repos");
+    api.getDates(users).then((resp) => {
+      if (resp.message === "Not Found") {
+        setError(true);
+      } else {
+        setError(false);
+        history.push({
+          pathname: "/Repos",
+          state: { datesUser: resp },
+        });
+      }
+    });
     setUsers("");
   };
 
@@ -57,16 +49,14 @@ const SearchItem = (props) => {
                 required
                 placeholder="GitHub username..."
                 variant="outlined"
-                value={props.users}
+                value={users}
                 type="text"
                 size="small"
-                helperText={error}
+                helperText={error ? "Icorrect Username" : null}
+                error={error}
                 className={classes.todoInput}
                 onChange={onChangeHanler}
               />
-              {/*<FormHelperText id="component-helper-text" error>
-                Some important helper text
-                </FormHelperText>*/}
 
               <Button
                 color="primary"

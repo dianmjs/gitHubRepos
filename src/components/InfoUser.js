@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Divider, Avatar } from "@material-ui/core";
+import { Typography, Divider } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import useStyles from "./Theme";
 import BusinessIcon from "@material-ui/icons/Business";
@@ -8,7 +8,6 @@ import LinkIcon from "@material-ui/icons/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 export const InfoUser = (props) => {
-  console.log(props.data);
   const classes = useStyles();
 
   return (
@@ -16,14 +15,14 @@ export const InfoUser = (props) => {
       <div>
         <img
           variant="square"
-          src={props.data.avatar_url}
+          src={props.datesUser.avatar_url}
           className={classes.media}
         />
       </div>
       <div>
-        <Typography variant="h5">{props.data.name}</Typography>
+        <Typography variant="h5">{props.datesUser.name}</Typography>
         <Typography variant="body2" style={{ color: "#424242" }}>
-          {props.data.login}
+          {props.datesUser.login}
         </Typography>
       </div>
       <div>
@@ -37,34 +36,34 @@ export const InfoUser = (props) => {
       </div>
       <div>
         <Typography variant="body2" color="initial">
-          {props.data.profile}
+          {props.datesUser.profile}
         </Typography>
       </div>
       <br />
       <div>
-        {props.data.company ? (
+        {props.datesUser.company ? (
           <Typography variant="body2" color="initial" className={classes.list}>
             <BusinessIcon style={{ color: "#424242" }} />
-            {props.data.company}
+            {props.datesUser.company}
           </Typography>
         ) : null}
 
-        {props.data.location ? (
+        {props.datesUser.location ? (
           <Typography variant="body2" color="initial" className={classes.list}>
             <RoomIcon style={{ color: "#424242" }} />
-            {props.data.location}
+            {props.datesUser.location}
           </Typography>
         ) : null}
 
-        {props.data.blog ? (
+        {props.datesUser.blog ? (
           <Typography
             variant="body2"
             color="primary"
             className={classes.list}
-            href={props.data.blog}
+            href={props.datesUser.blog}
           >
             <LinkIcon style={{ color: "#424242" }} />
-            {props.data.blog}
+            {props.datesUser.blog}
           </Typography>
         ) : null}
       </div>
@@ -75,11 +74,7 @@ export const InfoUser = (props) => {
         </Typography>
         <Divider />
       </div>
-      {/* <div>
-        <Typography variant="h6" className={classes.orga}></Typography>
-        <Avatar variant="square" className={classes.organizations}></Avatar>
-        <Divider />
-      </div>*/}
+
       <div>
         <Button
           variant="contained"

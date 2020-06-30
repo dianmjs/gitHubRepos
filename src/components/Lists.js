@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Typography, List, ListItem } from "@material-ui/core";
+import { Typography, List, ListItem } from "@material-ui/core";
 import useStyles from "./Theme";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import DeviceHubIcon from "@material-ui/icons/DeviceHub";
@@ -10,7 +10,6 @@ const Lists = (props) => {
 
   return (
     <div>
-      <Divider />
       <List>
         {props.repo
           .filter((nameRepo) => {
