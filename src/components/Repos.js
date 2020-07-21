@@ -8,7 +8,7 @@ import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
 import api from "../service/api";
 
-const Repos = (props) => {
+const Repos = () => {
   const classes = useStyles();
   const [repoFilter, setRepoFilter] = useState("");
   const [isLoading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ const Repos = (props) => {
     setRepoFilter(e.target.value);
   };
 
-  function getUniquelang(arr, comp) {
+  const getUniquelang = (arr, comp) => {
     const unique = arr
       //Compara los valores del array
       .map((e) => e[comp])
@@ -36,7 +36,7 @@ const Repos = (props) => {
       .filter((e) => arr[e])
       .map((e) => arr[e]);
     return unique;
-  }
+  };
 
   const Language = () => {
     api.getRepo(datesUser.login).then((resp) => {

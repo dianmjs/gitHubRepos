@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
 import api from "../service/api";
 
-const SearchItem = (props) => {
+const SearchItem = () => {
   const [users, setUsers] = useState("");
   const [error, setError] = useState(false);
 
@@ -52,7 +52,7 @@ const SearchItem = (props) => {
                 value={users}
                 type="text"
                 size="small"
-                helperText={error ? "Icorrect Username" : null}
+                helperText={error ? "*Icorrect Username" : null}
                 error={error}
                 className={classes.todoInput}
                 onChange={onChangeHanler}

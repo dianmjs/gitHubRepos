@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./components/Header";
 import SearchItem from "./components/SearchItem";
 import Repos from "./components/Repos";
@@ -11,12 +11,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <SearchItem
-            //userExist={userExist}
-            // getDates={getDates}
-            // getRepo={getRepo}
-            //datesUser={datesUser}
-            />
+            <SearchItem />
           </Route>
           <Route path="/Repos">
             <Repos />

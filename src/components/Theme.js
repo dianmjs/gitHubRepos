@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
   },
   todoInput: {
     width: "39vw",
-    // boxShadow: "2px 2px 5px #ab47bc",
+    //boxShadow: "1px 1px 5px #ab47bc",
   },
   button: {
     margin: "2px 15px 9px 14px",
