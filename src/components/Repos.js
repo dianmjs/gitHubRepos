@@ -11,16 +11,16 @@ import api from "../service/api";
 const Repos = () => {
   const classes = useStyles();
   const [repoFilter, setRepoFilter] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [lista, setLista] = useState([]);
   const [repor, setRepo] = useState([]);
   const history = useHistory();
 
-  const datesUser = history.location.state.datesUser;
+  //const datesUser = history.location.state.datesUser;
 
-  useEffect(() => {
+  /*useEffect(() => {
     Language();
-  }, []);
+  }, []);*/
 
   const onchangeRepo = (e) => {
     setRepoFilter(e.target.value);
@@ -38,14 +38,14 @@ const Repos = () => {
     return unique;
   };
 
-  const Language = () => {
+  /*const Language = () => {
     api.getRepo(datesUser.login).then((resp) => {
       setRepo(resp);
       setLista(getUniquelang(resp, "language"));
 
       setLoading(false);
     });
-  };
+  };*/
 
   return (
     <div>
@@ -58,7 +58,9 @@ const Repos = () => {
         <div>
           <Grid container justify="center" direction="row">
             <Grid item xs={6} sm={3} md={2}>
-              <InfoUser datesUser={datesUser} />
+              <InfoUser
+              //datesUser={datesUser}
+              />
             </Grid>
             <Grid item xs={12} sm={9} md={8}>
               <div className={classes.contecRepo}>

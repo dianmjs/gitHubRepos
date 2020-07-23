@@ -6,7 +6,7 @@ import userReducer from "./usuarioGit";
 
 //El que leemos en el componente
 const rootReducer = combineReducers({
-  user: userReducer,
+  userGit: userReducer,
 });
 
 //extension del navegador de redux

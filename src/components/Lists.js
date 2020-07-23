@@ -4,9 +4,21 @@ import useStyles from "./Theme";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import DeviceHubIcon from "@material-ui/icons/DeviceHub";
 import Moment from "react-moment";
+import { useDispatch, useSelector } from "react-redux";
+import { obtenerUsuarioAccion } from "../redux/usuarioGit";
 
 const Lists = (props) => {
   const classes = useStyles();
+  /*const dispatch = useDispatch();
+  React.useEffect(() => {
+    const fetchData = () => {
+      dispatch(obtenerUsuarioAccion());
+    };
+    fetchData();
+  }, [dispatch]);
+
+  /*const gitRepos = useSelector((store) => store.userGit.data);
+  console.log("el repo", gitRepos);*/
 
   return (
     <div>

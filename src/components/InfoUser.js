@@ -6,23 +6,25 @@ import BusinessIcon from "@material-ui/icons/Business";
 import RoomIcon from "@material-ui/icons/Room";
 import LinkIcon from "@material-ui/icons/Link";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { useDispatch, useSelector } from "react-redux";
+import { obtenerUsuarioAccion } from "../redux/usuarioGit";
 
 export const InfoUser = (props) => {
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
+  const gitInfo = useSelector((store) => store.userGit.data);
+
   return (
     <div className={classes.info}>
       <div>
-        <img
-          variant="square"
-          src={props.datesUser.avatar_url}
-          className={classes.media}
-        />
+        <img variant="square" src={gitInfo.avatar} className={classes.media} />
       </div>
       <div>
-        <Typography variant="h5">{props.datesUser.name}</Typography>
+        <Typography variant="h5">{gitInfo.nombre}</Typography>
         <Typography variant="body2" style={{ color: "#424242" }}>
-          {props.datesUser.login}
+          {gitInfo.alias}
         </Typography>
       </div>
       <div>
@@ -36,34 +38,33 @@ export const InfoUser = (props) => {
       </div>
       <div>
         <Typography variant="body2" color="initial">
-          {props.datesUser.profile}
+          {gitInfo.profile}
         </Typography>
       </div>
       <br />
       <div>
-        {props.datesUser.company ? (
+        {gitInfo.compañia ? (
           <Typography variant="body2" color="initial" className={classes.list}>
             <BusinessIcon style={{ color: "#424242" }} />
-            {props.datesUser.company}
+            {gitInfo.compañia}
           </Typography>
         ) : null}
 
-        {props.datesUser.location ? (
+        {gitInfo.location ? (
           <Typography variant="body2" color="initial" className={classes.list}>
             <RoomIcon style={{ color: "#424242" }} />
-            {props.datesUser.location}
+            {gitInfo.location}
           </Typography>
         ) : null}
-
-        {props.datesUser.blog ? (
+        {gitInfo.blog ? (
           <Typography
             variant="body2"
             color="primary"
             className={classes.list}
-            href={props.datesUser.blog}
+            href={gitInfo.blog}
           >
             <LinkIcon style={{ color: "#424242" }} />
-            {props.datesUser.blog}
+            {gitInfo.blog}
           </Typography>
         ) : null}
       </div>

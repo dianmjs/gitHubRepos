@@ -5,33 +5,51 @@ import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
-import api from "../service/api";
+import { useDispatch, useSelector } from "react-redux";
+import { obtenerUsuarioAccion } from "../redux/usuarioGit";
 
 const SearchItem = () => {
   const [users, setUsers] = useState("");
   const [error, setError] = useState(false);
 
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const GiUserExito = useSelector((store) => store.userGit.data);
+  console.log("informacion usuario", GiUserExito);
+
+  /*React.useEffect(() => {
+    const fetchData = () => {
+      dispatch(obtenerUsuarioAccion());
+    };
+
+    fetchData();
+  }, [dispatch]);*/
+
   const onChangeHanler = (e) => {
     setUsers(e.target.value);
   };
 
-  const history = useHistory();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.getDates(users).then((resp) => {
-      if (resp.message === "Not Found") {
-        setError(true);
-      } else {
-        setError(false);
-        history.push({
-          pathname: "/Repos",
-          state: { datesUser: resp },
-        });
-      }
-    });
+    if (GiUserExito.alias === "undefined") {
+      console.log("error", GiUserExito.alias);
+      setError(true);
+    } else {
+      console.log("usuario bueno", GiUserExito.alias);
+      setError(false);
+      history.push("/Repos");
+    }
     setUsers("");
   };
+
+  React.useEffect(() => {
+    const fetchData = () => {
+      dispatch(obtenerUsuarioAccion());
+    };
+    fetchData();
+  }, [dispatch]);
 
   const classes = useStyles();
   return (
@@ -63,6 +81,7 @@ const SearchItem = () => {
                 variant="contained"
                 type="submit"
                 className={classes.button}
+                onClick={() => dispatch(obtenerUsuarioAccion(users))}
               >
                 Search
               </Button>
