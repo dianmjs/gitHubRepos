@@ -12,30 +12,46 @@ import { obtenerUsuarioAccion } from "../redux/usuarioGit";
 export const InfoUser = (props) => {
   const classes = useStyles();
 
-  const dispatch = useDispatch();
-
   const gitInfo = useSelector((store) => store.userGit.data);
+  console.log("respuesta de gitInfo", gitInfo);
 
+  const newGit = [];
+  gitInfo.forEach((obj) => {
+    if (!newGit.some((o) => o.item === obj.item)) {
+      newGit.push({ ...obj });
+    }
+  });
+  console.log("metodo", newGit);
   return (
     <div className={classes.info}>
-      <div>
-        <img variant="square" src={gitInfo.avatar} className={classes.media} />
-      </div>
-      <div>
-        <Typography variant="h5">{gitInfo.nombre}</Typography>
-        <Typography variant="body2" style={{ color: "#424242" }}>
-          {gitInfo.alias}
-        </Typography>
-      </div>
-      <div>
-        <Button
-          size="large"
-          variant="outlined"
-          className={classes.buttonFollow}
-        >
-          Follow
-        </Button>
-      </div>
+      {newGit.map((infos) => {
+        return (
+          <div key={infos.id}>
+            <img
+              variant="square"
+              src={infos.owner.avatar_url}
+              className={classes.media}
+            />
+
+            <Typography variant="h5">{infos.owner.name}</Typography>
+            <Typography variant="body2" style={{ color: "#424242" }}>
+              {infos.owner.login}
+            </Typography>
+            <Button
+              size="large"
+              variant="outlined"
+              className={classes.buttonFollow}
+            >
+              Follow
+            </Button>
+            <Typography variant="body2" color="initial">
+              {infos.owner.profile}
+            </Typography>
+          </div>
+        );
+      })}
+
+      <div></div>
       <div>
         <Typography variant="body2" color="initial">
           {gitInfo.profile}

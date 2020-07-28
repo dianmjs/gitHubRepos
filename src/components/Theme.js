@@ -128,4 +128,9 @@ export default makeStyles((theme) => ({
     padding: "10px 3px 3px 5px",
     margin: "154px 10px 62px -9px",
   },
+  buttonNext: {
+    marginTop: "16px",
+    marginBottom: "16px",
+    textAlign: "center",
+  },
 }));

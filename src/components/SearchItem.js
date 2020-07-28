@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { obtenerUsuarioAccion } from "../redux/usuarioGit";
+import { infoReposAccion } from "../redux/usuarioGit";
 
 const SearchItem = () => {
   const [users, setUsers] = useState("");
@@ -19,37 +19,22 @@ const SearchItem = () => {
   const GiUserExito = useSelector((store) => store.userGit.data);
   console.log("informacion usuario", GiUserExito);
 
-  /*React.useEffect(() => {
-    const fetchData = () => {
-      dispatch(obtenerUsuarioAccion());
-    };
-
-    fetchData();
-  }, [dispatch]);*/
-
   const onChangeHanler = (e) => {
     setUsers(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (GiUserExito.alias === "undefined") {
+    /*if (GiUserExito.login === "undefined") {
       console.log("error", GiUserExito.alias);
       setError(true);
     } else {
-      console.log("usuario bueno", GiUserExito.alias);
       setError(false);
       history.push("/Repos");
-    }
+    }*/
+    history.push("/Repos");
     setUsers("");
   };
-
-  React.useEffect(() => {
-    const fetchData = () => {
-      dispatch(obtenerUsuarioAccion());
-    };
-    fetchData();
-  }, [dispatch]);
 
   const classes = useStyles();
   return (
@@ -81,7 +66,7 @@ const SearchItem = () => {
                 variant="contained"
                 type="submit"
                 className={classes.button}
-                onClick={() => dispatch(obtenerUsuarioAccion(users))}
+                onClick={() => dispatch(infoReposAccion(users))}
               >
                 Search
               </Button>

@@ -2,69 +2,63 @@ import axios from "axios";
 
 //constantes
 const initialState = {
-  data: {},
-  previous: null,
+  data: [],
+  page: 0,
   next: null,
 };
 
 //types
-const USUARIO_EXITO = "USUARIO_EXITO";
-const INFO_USUARIO = "INFO_USUARIO";
-const POST_USUARIO = "POST_USUARIO";
+//const USUARIO_EXITO = "USUARIO_EXITO";
+const INFOREPOS_USUARIO = "INFOREPOS_USUARIO";
+//const POST_USUARIO = "POST_USUARIO";
 const SIGUIENTE_REPO = "SIGUIENTE_REPO";
 
 //reducer
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
-    case USUARIO_EXITO:
+    case SIGUIENTE_REPO:
+      return {
+        ...state,
+        array: action.payload.array,
+        page: action.payload.page,
+      };
+    case INFOREPOS_USUARIO:
       return { ...state, data: action.payload };
-    case INFO_USUARIO:
-      return { ...state, info: action.payload };
     default:
       return state;
   }
 }
 
 //actions
-export const obtenerUsuarioAccion = (user) => async (dispatch, getState) => {
-  console.log("getState", getState());
-  const url = `https://api.github.com/users/${user}`;
+export const siguientePostAccion = () => async (dispatch, getState) => {
+  const { page } = getState().userGit;
+  const siguiente = page + num;
+
+  const url = `https://api.github.com/user/repos?page=${siguiente}&per_page=100`;
 
   try {
     const res = await axios.get(url);
     console.log("api user", res);
     dispatch({
-      type: USUARIO_EXITO,
+      type: SIGUIENTE_REPO,
       payload: {
-        avatar: res.data.avatar_url,
-        nombre: res.data.name,
-        alias: res.data.login,
-        profile: res.data.bio,
-        compañia: res.data.company,
-        location: res.data.location,
-        blog: res.data.blog,
+        array: res.data,
+        page: siguiente,
       },
     });
   } catch (error) {
     console.log("usuario error", error);
   }
 };
-export const infoUserAccion = (user) => async (dispatch, getState) => {
-  const url = `https://api.github.com/users/${user}`;
+export const infoReposAccion = (user) => async (dispatch, getState) => {
+  const url = `https://api.github.com/users/${user}/repos`;
+
   try {
     const res = await axios.get(url);
-    console.log(res.data);
+    console.log("repos api", res.data);
     dispatch({
-      type: INFO_USUARIO,
-      payload: {
-        avatar: res.data.avatar_url,
-        nombre: res.data.name,
-        alias: res.data.login,
-        profile: res.data.bio,
-        compañia: res.data.company,
-        location: res.data.location,
-        blog: res.data.blog,
-      },
+      type: INFOREPOS_USUARIO,
+      payload: res.data,
     });
   } catch (error) {
     console.log(error);

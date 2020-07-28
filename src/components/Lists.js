@@ -4,73 +4,70 @@ import useStyles from "./Theme";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import DeviceHubIcon from "@material-ui/icons/DeviceHub";
 import Moment from "react-moment";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { obtenerUsuarioAccion } from "../redux/usuarioGit";
+import { infoReposAccion } from "../redux/usuarioGit";
 
 const Lists = (props) => {
   const classes = useStyles();
-  /*const dispatch = useDispatch();
-  React.useEffect(() => {
-    const fetchData = () => {
-      dispatch(obtenerUsuarioAccion());
-    };
-    fetchData();
-  }, [dispatch]);
 
-  /*const gitRepos = useSelector((store) => store.userGit.data);
-  console.log("el repo", gitRepos);*/
+  const dispatch = useDispatch();
+
+  const gitRepos = useSelector((store) => store.userGit.data);
+  console.log("el repo", gitRepos);
 
   return (
     <div>
       <List>
-        {props.repo
-          .filter((nameRepo) => {
-            return nameRepo.name.indexOf(props.repoFilter.toLowerCase()) >= 0;
-          })
-          .map((items) => {
-            return (
-              <ListItem key={items.id} className={classes.line}>
-                <div>
-                  <div>
+        {gitRepos.map((items) => {
+          return (
+            <ListItem key={items.id} className={classes.line}>
+              <div>
+                <Typography
+                  variant="h5"
+                  color="initial"
+                  className={classes.textRepo}
+                >
+                  {items.name}
+                </Typography>
+                <Typography variant="body1" className={classes.textRepo2}>
+                  {items.description}
+                </Typography>
+                <div className={classes.reposLenguage}>
+                  {items.language ? (
+                    <Typography variant="body2" className={classes.point}>
+                      <FiberManualRecordIcon style={{ color: "#651fff" }} />
+                      {items.language}
+                    </Typography>
+                  ) : null}
+
+                  {items.forks_count ? (
                     <Typography
-                      variant="h5"
+                      variant="body2"
                       color="initial"
-                      className={classes.textRepo}
+                      className={classes.count}
                     >
-                      {items.name}
+                      <DeviceHubIcon className={classes.iconCount} />
+                      {items.forks_count}
                     </Typography>
-                    <Typography variant="body1" className={classes.textRepo2}>
-                      {items.description}
-                    </Typography>
-                    <div className={classes.reposLenguage}>
-                      {items.language ? (
-                        <Typography variant="body2" className={classes.point}>
-                          <FiberManualRecordIcon style={{ color: "#651fff" }} />
-                          {items.language}
-                        </Typography>
-                      ) : null}
+                  ) : null}
 
-                      {items.forks_count ? (
-                        <Typography
-                          variant="body2"
-                          color="initial"
-                          className={classes.count}
-                        >
-                          <DeviceHubIcon className={classes.iconCount} />
-                          {items.forks_count}
-                        </Typography>
-                      ) : null}
-
-                      <Typography variant="body2" color="initial">
-                        Update on{" "}
-                        <Moment from={new Date()}>{items.created_at}</Moment>
-                      </Typography>
-                    </div>
-                  </div>
+                  <Typography variant="body2" color="initial">
+                    Update on{" "}
+                    <Moment from={new Date()}>{items.created_at}</Moment>
+                  </Typography>
                 </div>
-              </ListItem>
-            );
-          })}
+              </div>
+            </ListItem>
+          );
+        })}
+        <div className={classes.buttonNext}>
+          <ButtonGroup disableElevation color="primary">
+            <Button>Previous</Button>
+            <Button onClick={() => dispatch(infoReposAccion(num))}>Next</Button>
+          </ButtonGroup>
+        </div>
       </List>
     </div>
   );

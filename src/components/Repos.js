@@ -6,27 +6,33 @@ import { InfoUser } from "../components/InfoUser";
 import Lists from "../components/Lists";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";
-import api from "../service/api";
+import { useDispatch, useSelector } from "react-redux";
 
 const Repos = () => {
   const classes = useStyles();
   const [repoFilter, setRepoFilter] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [lista, setLista] = useState([]);
   const [repor, setRepo] = useState([]);
   const history = useHistory();
 
-  //const datesUser = history.location.state.datesUser;
+  const gitRepos = useSelector((store) => store.userGit.data);
 
   /*useEffect(() => {
     Language();
   }, []);*/
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   const onchangeRepo = (e) => {
     setRepoFilter(e.target.value);
   };
 
-  const getUniquelang = (arr, comp) => {
+  /*const getUniquelang = (arr, comp) => {
     const unique = arr
       //Compara los valores del array
       .map((e) => e[comp])
@@ -36,7 +42,7 @@ const Repos = () => {
       .filter((e) => arr[e])
       .map((e) => arr[e]);
     return unique;
-  };
+  };*/
 
   /*const Language = () => {
     api.getRepo(datesUser.login).then((resp) => {
@@ -47,6 +53,13 @@ const Repos = () => {
     });
   };*/
 
+  const newGit2 = [];
+  gitRepos.forEach((obj) => {
+    if (!newGit2.some((o) => o.language === obj.language)) {
+      newGit2.push({ ...obj });
+    }
+  });
+  console.log("compara los lenguages", newGit2);
   return (
     <div>
       {isLoading && (
@@ -58,9 +71,7 @@ const Repos = () => {
         <div>
           <Grid container justify="center" direction="row">
             <Grid item xs={6} sm={3} md={2}>
-              <InfoUser
-              //datesUser={datesUser}
-              />
+              <InfoUser />
             </Grid>
             <Grid item xs={12} sm={9} md={8}>
               <div className={classes.contecRepo}>
@@ -82,7 +93,7 @@ const Repos = () => {
                       Language All
                     </option>
 
-                    {lista.map((leng) => {
+                    {newGit2.map((leng) => {
                       return (
                         <option
                           key={leng.id}
@@ -97,7 +108,7 @@ const Repos = () => {
                 </form>
                 <Divider />
 
-                <Lists repo={repor} repoFilter={repoFilter} />
+                <Lists />
               </div>
             </Grid>
           </Grid>
